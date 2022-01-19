@@ -109,7 +109,6 @@ You can (and should) check the status of your transaction with the following URL
 |[Ex10](contracts/ex10.cairo)|[0x062387032afe8d919c3f616b2efbf4cba1939daf2fccf349cc9a8df51c1a6063](https://goerli.voyager.online/contract/0x062387032afe8d919c3f616b2efbf4cba1939daf2fccf349cc9a8df51c1a6063)|
 |[Ex11](contracts/ex11.cairo)|[0x04fb9a9ec6b45c165d86e8861f653728b5dafec809ed248496e4074ec08c3f93](https://goerli.voyager.online/contract/0x04fb9a9ec6b45c165d86e8861f653728b5dafec809ed248496e4074ec08c3f93)|
 ​
-​
 ## Contributing
 ### Help is welcome!
 This project can be made better, and will evolve in the coming weeks. Your contributions are welcome! Here are things that you can do to help:
