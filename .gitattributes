@@ -1,1 +1,2 @@
 *.cairo linguist-language=python
+contracts/** linguist-vendored
