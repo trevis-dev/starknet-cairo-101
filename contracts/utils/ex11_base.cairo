@@ -71,14 +71,14 @@ func exercise_id{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_p
 end
 
 @view
-func has_validated_exercise{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(account: felt) -> (has_validated_exercice: felt):
+func has_validated_exercise{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(account: felt) -> (has_validated_exercise: felt):
     # reading player registry
     let (_players_registry) = players_registry_storage.read()
     let (_workshop_id) = workshop_id_storage.read()
     let (_exercise_id) = exercise_id_storage.read()
-    # Checking if the user already validated this exercice
-    let (has_current_user_validated_exercice) = Iplayers_registry.has_validated_exercice(contract_address=_players_registry, account=account, workshop=_workshop_id, exercise = _exercise_id)
-    return (has_current_user_validated_exercice)
+    # Checking if the user already validated this exercise
+    let (has_current_user_validated_exercise) = Iplayers_registry.has_validated_exercise(contract_address=_players_registry, account=account, workshop=_workshop_id, exercise = _exercise_id)
+    return (has_current_user_validated_exercise)
 end
 
 @view
@@ -136,12 +136,12 @@ func validate_exercise{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_c
     let (_players_registry) = players_registry_storage.read()
     let (_workshop_id) = workshop_id_storage.read()
     let (_exercise_id) = exercise_id_storage.read()
-    # Checking if the user already validated this exercice
-    let (has_current_user_validated_exercice) = Iplayers_registry.has_validated_exercice(contract_address=_players_registry, account=account, workshop=_workshop_id, exercise = _exercise_id)
-    assert (has_current_user_validated_exercice) = 0
+    # Checking if the user already validated this exercise
+    let (has_current_user_validated_exercise) = Iplayers_registry.has_validated_exercise(contract_address=_players_registry, account=account, workshop=_workshop_id, exercise = _exercise_id)
+    assert (has_current_user_validated_exercise) = 0
 
-    # Marking the exercice as completed
-    Iplayers_registry.validate_exercice(contract_address=_players_registry, account=account, workshop=_workshop_id, exercise = _exercise_id)
+    # Marking the exercise as completed
+    Iplayers_registry.validate_exercise(contract_address=_players_registry, account=account, workshop=_workshop_id, exercise = _exercise_id)
     
 
     return()
@@ -153,8 +153,8 @@ func validate_answers{
         range_check_ptr
     }(sender_address: felt, secret_value_i_guess: felt, next_secret_value_i_chose: felt):
     # CAREFUL THERE IS A TRAP FOR PEOPLE WHO WON'T READ THE CODE
-    # This exercice looks like the previous one, but actually the view secret_value returns a different value than secret_value
-    # Sending the wrong execution result will remove some of your points, then validate the exercice. You won't be able to get those points back later on!
+    # This exercise looks like the previous one, but actually the view secret_value returns a different value than secret_value
+    # Sending the wrong execution result will remove some of your points, then validate the exercise. You won't be able to get those points back later on!
     alloc_locals
     let (secret_value) = ex11_secret_value.read()
     local diff = secret_value_i_guess - secret_value 
